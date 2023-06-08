@@ -1,0 +1,31 @@
+
+
+  <link name="left_lower_arm">
+    <visual>
+      <origin xyz="0.0 ${lower_arm_width/2} 0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${lower_arm_length} ${lower_arm_width} ${lower_arm_height}"/>
+      </geometry>
+    </visual>
+    <collision>
+      <origin xyz="0.0 ${lower_arm_width/2} 0" rpy="0.0 0.0 0.0"/>
+      <geometry>
+        <box size="${lower_arm_length} ${lower_arm_width} ${lower_arm_height}"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="${lower_arm_mass}"/>
+      <inertia
+          ixx="${lower_arm_mass*(lower_arm_width*lower_arm_width+lower_arm_height*lower_arm_height)/12}" ixy="0.0" ixz="0.0"
+          iyy="${lower_arm_mass*(lower_arm_length*lower_arm_length+lower_arm_height*lower_arm_height)/12}" iyz="0.0"
+          izz="${lower_arm_mass*(lower_arm_length*lower_arm_length+lower_arm_width*lower_arm_width)/12}"
+      />
+    </inertial>
+  </link>
+
+  <joint name="left_lower_arm_joint" type="continuous">
+    <parent link="left_upper_arm"/>
+    <child link="left_lower_arm"/>
+    <axis xyz="0 0 1"/>
+    <origin xyz="0 ${upper_arm_width} 0}" rpy="0 0 0"/>
+  </joint>
